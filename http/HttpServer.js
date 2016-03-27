@@ -126,7 +126,7 @@ module.exports = (function(){
         ///配置信息
         config:{
             port:8888,
-            ip:'onepixel.top',
+            ip:'127.0.0.1',
             mime:{
                 html:"text/html",
                 js:"text/javascript",
