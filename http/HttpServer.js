@@ -24,7 +24,7 @@ module.exports = (function(){
 
             //在指定的端口监听服务
             httpServer.listen(port,function(){
-                console.log("[HttpServer][Start]","runing at http://"+ip+"/"+port+"/");
+                console.log("[HttpServer][Start]","runing at http://"+ip+":"+port+"/");
                 console.timeEnd("[HttpServer][Start]");
             });
 
@@ -126,7 +126,7 @@ module.exports = (function(){
         ///配置信息
         config:{
             port:8888,
-            ip:'127.0.0.1',
+            ip:'onepixel.top',
             mime:{
                 html:"text/html",
                 js:"text/javascript",
