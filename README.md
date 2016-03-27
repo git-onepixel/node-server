@@ -1,4 +1,4 @@
-# 使用Node.js搭建静态Web服务器
+# 使用Node.js搭建Web服务器
 
 1、能显示以.html/.htm结尾的Web页面
 
