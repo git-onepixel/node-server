@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5单页面切换骨架</title>
+</head>
+<style>
+    html,body{font-family: "Microsoft YaHei"}
+    img{display: block;width: 20%}
+    span{color: red}
+</style>
+<script>
+    if(!/(windows)/i.test(navigator.userAgent)){
+        location.href = '../';
+    }
+
+    function Base(){
+        this.a = 1;
+    }
+    Base.prototype = {
+        test:function(){
+            console.log('xxxx');
+        }
+    }
+
+    function Child(){
+        this.b = 1;
+    }
+    Child.prototype = new Base();
+
+    var o = new Child();
+    console.log(o.a,o.b,o.test);
+
+    var o1 = Object.create(new Base(),{
+        b:{
+            value:1,
+            writable:true,
+            enumerable: false
+        },
+        c:{
+            //value:0,  //不能赋值，不能writable
+            configurable:true, //可删除可修改
+            get: function() { return c; },
+            set: function(value) { c=value}
+        }
+    })
+    o1.c = 1;
+    console.log(o1.a,o1.b,o1.c,o1.test);
+
+    console.log(o1.c);
+
+
+    if(!Object.hasOwnProperty('create') || 1){
+        Object.create = function(proto,props){
+            function child(){};
+            if(proto !=null && typeof proto !== 'object'){
+                throw new TypeError('prototype must be an object or null.')
+            }
+            child.prototype = proto || {};
+
+            var obj = new child();
+
+            if(props){
+                Object.defineProperties(obj,props);
+            }
+            return obj;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+<body>
+    <h3>H5单页面手势滑屏切换<span>(请用手机或模拟器访问)</span></h3>
+    <hr>
+    <div>
+        <img src="../images/onepixel.png">
+    </div>
+</body>
+</html>
