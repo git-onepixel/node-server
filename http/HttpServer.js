@@ -12,6 +12,8 @@ module.exports = (function(){
     var fs = require("fs");
     //路径解析模块
     var path = require("path");
+    //浏览器打开模块
+    const opn = require('opn');
 
     return {
         //启动服务
@@ -25,6 +27,7 @@ module.exports = (function(){
             //在指定的端口监听服务
             httpServer.listen(port,function(){
                 console.log("[HttpServer][Start]","runing at http://"+ip+":"+port+"/");
+                opn("http://" + ip + ":" + port + "/"); //服务启动后在浏览器自动打开
                 console.timeEnd("[HttpServer][Start]");
             });
 
@@ -56,6 +59,7 @@ module.exports = (function(){
                         location:redirect
                     });
                     response.end();
+                    return ; //fix bug: 执行301重定向后应终止后续流程，以防 "write after end" 异常 （2017-4-21 23:11:37）
                 }
                 //添加默认的访问页面,但这个页面不一定存在,后面会处理
                 pathName += "index.html";
