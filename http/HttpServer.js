@@ -12,8 +12,6 @@ module.exports = (function(){
     var fs = require("fs");
     //路径解析模块
     var path = require("path");
-    //浏览器打开模块
-    const opn = require('opn');
 
     return {
         //启动服务
@@ -27,7 +25,6 @@ module.exports = (function(){
             //在指定的端口监听服务
             httpServer.listen(port,function(){
                 console.log("[HttpServer][Start]","runing at http://"+ip+":"+port+"/");
-                opn("http://" + ip + ":" + port + "/"); //服务启动后在浏览器自动打开
                 console.timeEnd("[HttpServer][Start]");
             });
 
